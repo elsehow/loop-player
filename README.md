@@ -1,12 +1,20 @@
-# empty-browser-module
+# looops player
 
-an empty module project for the browser
+a circular, looping player for audio files
 
-## setup
+## example
+
+```js
+var player = looping('files/banger.mp3')
+```
+
+`player` is [yo-yo]() template string representing the player.
+
+## install
 
     npm install
 
-## use
+## developing
 
 to watch test/index.js, and its dependencies
 
