@@ -1,6 +1,6 @@
 # looops player
 
-a circular, looping player for audio files
+a circular UI for playing audio loops
 
 ## example
 
