@@ -8,7 +8,7 @@ a circular UI for playing audio loops
 var player = looping('files/banger.mp3', 500)
 ```
 
-`player` is [yo-yo]() template string representing the player - a single div.
+`player` is [yo-yo](https://github.com/maxogden/yo-yo) template string representing the player - a single div.
 
 when clicked, the player will load `files/banger.mp3`, and fade it in over the course of 500ms, looping it.
 
