@@ -7,6 +7,12 @@ it also exposes the low-level `AudioBufferNode`, though you shouldn't need to ac
 ## example
 
 ```js
+let player = looping(webCtx, 'banger.mp3', 500)
+// will load, then play banger.mp3, fading in over 500 ms
+player.start() 
+// after 3000 ms, start to fade the song out
+setTimeout(player.stop, 3000)
+
 ```
 
 ## install
@@ -31,7 +37,7 @@ returns an object `player` with the properties
 
 - `.start()` - loads audio if not loaded; starts to play (fading in) if/when loaded
 
-- `.stop()` - fades audio out
+- `.stop()` - fades audio out. if loading, aborts the load.
 
 `.AudioBufferNode` - AudioBufferNode or null
 
