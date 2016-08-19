@@ -13,6 +13,7 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
+    "audio-context": "^0.1.0",
     "ud": "^3.0.1"
   }
 }
