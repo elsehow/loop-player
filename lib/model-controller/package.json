@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "audio-context": "^0.1.0",
+    "minidux": "^1.0.1",
     "ud": "^3.0.1"
   }
 }

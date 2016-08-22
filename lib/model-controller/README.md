@@ -1,4 +1,4 @@
-# looping-webaudio-player
+# model-controller
 
 responsible for loading an audio file, and looping it in a webaudio context. maintains some state: whether the file is `loading` or `playing`, and its `loadProgress` and `loopProgress`.
 
@@ -8,14 +8,9 @@ it also exposes the low-level `AudioBufferNode`, though you shouldn't need to ac
 
 ```js
 let player = looping(webCtx, 'banger.mp3', 500)
-player.on('loading', () => console.log('loading!'))
-player.on('load-progress, p => console.log('loaded', p))
-player.on('done-loading', () => console.log('done loading!'))
-player.on('fading-in', () => console.log('fading in!'))
-player.on('done-fading-in', () => console.log('done fading in!'))
-player.on('fading-out', () => console.log('fading out!'))
-player.on('done-fading-out', () => console.log('done fading out!'))
-// will load, then play banger.mp3, fading in over 500 ms
+// get updates on new states
+player.subscribe(function (state) {console.log(state)})
+// fade the song in
 player.start() 
 // after 3000 ms, start to fade the song out
 setTimeout(player.stop, 3000)
@@ -27,11 +22,13 @@ setTimeout(player.stop, 3000)
     
 ## api
 
-### looping(webCtx, url)
+### looping(webCtx, fileUrl, fadeTime)
 
 takes an audio context, and a url to some sound file
 
-returns an object `player` with the properties
+returns a [minidux](https://www.npmjs.com/package/minidux) `store`, each state of which has the properties:
+
+`.error` - an error, or null
 
 `.loading`- boolean
 
@@ -41,11 +38,11 @@ returns an object `player` with the properties
 
 `.loopProgress`- float 0-1 
 
-- `.start()` - loads audio if not loaded; starts to play (fading in) if/when loaded
+`.start()` - loads audio if not loaded; starts to play (fading in) if/when loaded
 
-- `.stop()` - fades audio out. if loading, aborts the load.
+`.stop()` - fades audio out. if loading, aborts the load.
 
-`.AudioBufferNode` - AudioBufferNode or null
+`.AudioBuffer` - A decoded audio buffer, or null (you shouldn't need to access this)
 
 ## develop
 
