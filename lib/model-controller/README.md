@@ -7,7 +7,7 @@ it also exposes the low-level `AudioBufferNode`, though you shouldn't need to ac
 ## example
 
 ```js
-let player = looping(webCtx, 'banger.mp3', 500)
+let player = looping(webCtx, 'banger.mp3', 500, 100)
 // get updates on new states
 player.subscribe(function (state) {console.log(state)})
 // fade the song in
@@ -22,7 +22,7 @@ setTimeout(player.stop, 3000)
     
 ## api
 
-### looping(webCtx, fileUrl, fadeTime)
+### looping(webCtx, fileUrl, fadeTime=300, playProgressPoll=100)
 
 takes an audio context, and a url to some sound file
 
