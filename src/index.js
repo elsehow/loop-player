@@ -5,7 +5,6 @@ const ctx = require('audio-context')
 let defaultStyle = {
   size: 120,               // px, player is square
   color: '#bbb',          // some css color
-  background: 'white' // some css color
 }
 module.exports = function (url, queryselector, style, fade=1000) {
   if (!style) style = defaultStyle
